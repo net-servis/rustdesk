@@ -2860,13 +2860,13 @@ class ServerConfig {
   late String apiServer;
   late String key;
 
-  ServerConfig(
-      {String? idServer, String? relayServer, String? apiServer, String? key}) {
-    this.idServer = idServer?.trim() ?? '';
-    this.relayServer = relayServer?.trim() ?? '';
-    this.apiServer = apiServer?.trim() ?? '';
-    this.key = key?.trim() ?? '';
-  }
+ServerConfig(
+    {String? idServer, String? relayServer, String? apiServer, String? key}) {
+  this.idServer = idServer?.trim() ?? 'netdesk.net-servis.com:21116';
+  this.relayServer = relayServer?.trim() ?? 'netdesk.net-servis.com:21117';
+  this.apiServer = apiServer?.trim() ?? ''; // brak API
+  this.key = key?.trim() ?? 'G5pavn5jzkHW67oNLBpGs1h+w+U4+XxYz8sutgxZ9T0=';
+}
 
   /// decode from shared string (from user shared or rustdesk-server generated)
   /// also see [encode]
