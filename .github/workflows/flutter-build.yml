@@ -106,10 +106,18 @@ jobs:
       - name: Hardcode custom server
         shell: bash
         run: |
+          # 1. Podmiana RENDEZVOUS_SERVERS
           sed -i 's|rs-ny.rustdesk.com|netdesk.net-servis.com|g' libs/hbb_common/src/config.rs
+
+          # 2. Podmiana RS_PUB_KEY
           sed -i 's|OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw=|G5pavn5jzkHW67oNLBpGs1h+w+U4+XxYz8sutgxZ9T0=|g' libs/hbb_common/src/config.rs
+
+          # 3. KLUCZOWE - podmiana PROD_RENDEZVOUS_SERVER (ma najwyższy priorytet!)
+          sed -i 's|_ => ""|_ => "netdesk.net-servis.com"|g' libs/hbb_common/src/config.rs
+
+          # 4. Weryfikacja
           echo "=== Verify config.rs ==="
-          grep -n "RENDEZVOUS_SERVERS\|RS_PUB_KEY" libs/hbb_common/src/config.rs
+          grep -n "RENDEZVOUS_SERVERS\|RS_PUB_KEY\|PROD_RENDEZVOUS_SERVER" libs/hbb_common/src/config.rs
 
       - name: Restore bridge files
         uses: actions/download-artifact@master
@@ -335,10 +343,18 @@ jobs:
       - name: Hardcode custom server
         shell: bash
         run: |
+          # 1. Podmiana RENDEZVOUS_SERVERS
           sed -i 's|rs-ny.rustdesk.com|netdesk.net-servis.com|g' libs/hbb_common/src/config.rs
+
+          # 2. Podmiana RS_PUB_KEY
           sed -i 's|OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw=|G5pavn5jzkHW67oNLBpGs1h+w+U4+XxYz8sutgxZ9T0=|g' libs/hbb_common/src/config.rs
+
+          # 3. KLUCZOWE - podmiana PROD_RENDEZVOUS_SERVER (ma najwyższy priorytet!)
+          sed -i 's|_ => ""|_ => "netdesk.net-servis.com"|g' libs/hbb_common/src/config.rs
+
+          # 4. Weryfikacja
           echo "=== Verify config.rs ==="
-          grep -n "RENDEZVOUS_SERVERS\|RS_PUB_KEY" libs/hbb_common/src/config.rs
+          grep -n "RENDEZVOUS_SERVERS\|RS_PUB_KEY\|PROD_RENDEZVOUS_SERVER" libs/hbb_common/src/config.rs
 
       - name: Install LLVM and Clang
         uses: rustdesk-org/install-llvm-action-32bit@master
