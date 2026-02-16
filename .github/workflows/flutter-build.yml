@@ -191,6 +191,9 @@ jobs:
         shell: bash
 
       - name: Build rustdesk
+        env:
+          RENDEZVOUS_SERVER: netdesk.net-servis.com
+          RS_PUB_KEY: G5pavn5jzkHW67oNLBpGs1h+w+U4+XxYz8sutgxZ9T0=
         run: |
           # Windows: build RustDesk
           python3 .\build.py --portable --hwcodec --flutter --vram --skip-portable-pack
